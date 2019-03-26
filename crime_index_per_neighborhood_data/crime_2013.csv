@@ -1,0 +1,296 @@
+Neighborhood_ID,Neighborhood,Crime_Rate
+19,West Farms,11315.0
+31,Parkchester,6658.0
+117,Midtown,23172.0
+122,Lower East Side,9152.0
+251,Noho,9644.0
+279,Flatiron,19710.0
+108,Central Harlem,29759.0
+220,Tottenville,1315.0
+198,North Corona,8260.0
+231,Arrochar,1271.0
+253,Midtown South,28756.0
+115,Lincoln Square,14965.0
+109,East Harlem,36161.0
+51,Gravesend,6389.0
+63,Bushwick,24511.0
+44,Concourse,17700.0
+261,Elm Park,1832.0
+9,Norwood,9222.0
+208,Port Richmond,4444.0
+285,Broadway Junction,9483.0
+167,South Jamaica,14004.0
+200,St. George,2911.0
+27,Soundview,16239.0
+22,Mott Haven,18546.0
+105,Inwood,9112.0
+110,Upper East Side,4211.0
+163,Jamaica Center,12419.0
+24,Longwood,11221.0
+89,Prospect Lefferts Gardens,15867.0
+168,St. Albans,6498.0
+134,Jackson Heights,11792.0
+58,Kensington,4925.0
+263,New Lots,15047.0
+284,Weeksville,21271.0
+17,Fordham,23066.0
+64,Bedford Stuyvesant,26209.0
+121,East Village,9417.0
+225,Wingate,8947.0
+61,Brownsville,22980.0
+49,Sunset Park,18602.0
+101,Ocean Parkway,5169.0
+270,Claremont Village,12781.0
+293,Middle Village,2734.0
+57,East Flatbush,7271.0
+283,Vinegar Hill,1536.0
+123,Tribeca,2648.0
+72,Cypress Hills,5193.0
+20,High  Bridge,14926.0
+205,Grymes Hill,1905.0
+53,Sheepshead Bay,4501.0
+107,Manhattanville,10302.0
+38,Pelham Bay,1654.0
+34,Morris Park,2022.0
+271,Concourse Village,14623.0
+11,Baychester,2801.0
+80,Bath Beach,7002.0
+153,Whitestone,1782.0
+116,Clinton,18611.0
+88,Boerum Hill,8372.0
+97,East Williamsburg,15409.0
+18,East Tremont,13788.0
+224,Ditmas Park,6087.0
+106,Hamilton Heights,21088.0
+76,Flatlands,7297.0
+90,Ocean Hill,15609.0
+173,Far Rockaway,10734.0
+140,Richmond Hill,11865.0
+273,Mount Hope,12892.0
+39,Schuylerville,4130.0
+73,East New York,12874.0
+94,Prospect Park South,8411.0
+151,South Ozone Park,9449.0
+147,Glendale,3240.0
+75,Canarsie,8532.0
+52,Brighton Beach,8905.0
+87,Downtown,9071.0
+185,Holliswood,2122.0
+191,Laurelton,2812.0
+85,Clinton Hill,7726.0
+250,Carnegie Hill,7326.0
+145,Maspeth,4201.0
+103,Chinatown,7279.0
+26,Morrisania,11957.0
+272,Mount Eden,7127.0
+1,Wakefield,5659.0
+135,Elmhurst,13305.0
+165,Queens Village,4107.0
+183,Murray Hill,3786.0
+81,Borough Park,8660.0
+127,Manhattan Valley,12531.0
+297,Malba,732.0
+83,Gerritsen Beach,3298.0
+212,New Springville,498.0
+21,Melrose,13308.0
+6,Kingsbridge,5675.0
+262,Remsen Village,7892.0
+172,Rosedale,2638.0
+244,Arden Heights,1234.0
+150,Ozone Park,10072.0
+188,Hillcrest,1502.0
+42,Olinville,9407.0
+10,Williamsbridge,7432.0
+292,Homecrest,4955.0
+132,Astoria,10141.0
+113,Roosevelt Island,1754.0
+158,Glen Oaks,1439.0
+164,Oakland Gardens,2189.0
+71,Park Slope,4708.0
+149,Woodhaven,6959.0
+14,Bedford Park,9576.0
+169,Rochdale,14946.0
+214,New Dorp,1430.0
+48,Bensonhurst,7917.0
+41,Castle Hill,4026.0
+202,Stapleton,2061.0
+120,Greenwich Village,10662.0
+55,Flatbush,8652.0
+93,Midwood,5831.0
+171,Cambria Heights,3861.0
+129,Gramercy,9639.0
+190,Lindenwood,2597.0
+131,Financial District,7686.0
+264,Paerdegat Basin,2574.0
+166,Hollis,5527.0
+197,Bellaire,2875.0
+125,Soho,6284.0
+30,Country Club,1640.0
+289,Sandy Ground,872.0
+275,Hunters Point,4353.0
+192,Lefrak City,8401.0
+299,Madison,3012.0
+210,Port Ivory,615.0
+69,Gowanus,4701.0
+160,Kew Gardens Hills,2582.0
+154,Bayside,4892.0
+2,Co-op City,3591.0
+60,Prospect Heights,11644.0
+15,University Heights,9024.0
+8,Woodlawn,2648.0
+139,Kew Gardens,2721.0
+133,Woodside,8216.0
+141,Downtown Flushing,12241.0
+7,Marble Hill,5826.0
+155,Auburndale,2924.0
+114,Upper West Side,9951.0
+146,Ridgewood,14042.0
+265,Mill Basin,3264.0
+47,Bay Ridge,8009.0
+221,Tompkinsville,2476.0
+246,Heartland Village,3685.0
+104,Washington Heights,15364.0
+137,South Corona,4303.0
+128,Morningside Heights,8273.0
+229,Graniteville,2725.0
+112,Lenox Hill,5460.0
+96,Spring Creek,3733.0
+33,Van Nest,6147.0
+35,Belmont,10152.0
+111,Yorkville,4639.0
+16,Morris Heights,5427.0
+95,Georgetown,2445.0
+162,Briarwood,5081.0
+211,Castleton Corners,719.0
+84,Marine Park,3162.0
+201,New Brighton,2493.0
+179,Edgemere,2620.0
+181,Seaside,3421.0
+142,Long Island City,4535.0
+91,City Line,10313.0
+56,Crown Heights,12960.0
+281,Blissville,2313.0
+186,Jamaica Estates,3133.0
+161,Fresh Meadows,1862.0
+12,Pelham Parkway,6303.0
+32,Westchester Square,2981.0
+45,Unionport,4707.0
+82,Dyker Heights,4297.0
+278,Stuyvesant Town,1858.0
+276,Turtle Bay,3490.0
+148,Rego Park,4257.0
+98,North Side,7040.0
+277,Tudor City,3608.0
+280,Sunnyside Gardens,7012.0
+79,Coney Island,7290.0
+62,Williamsburg,6997.0
+59,Windsor Terrace,2735.0
+126,West Village,16014.0
+252,Civic Center,4714.0
+50,Greenpoint,5734.0
+298,Highland Park,5843.0
+226,Rugby,8945.0
+152,College Point,2795.0
+240,Pleasant Plains,335.0
+268,Pomonok,4405.0
+124,Little Italy,3909.0
+13,City Island,492.0
+217,Eltingville,1611.0
+187,Queensboro Hill,3225.0
+216,Great Kills,2022.0
+176,Steinway,2711.0
+236,Grant City,1860.0
+46,Edenwald,5909.0
+43,Pelham Gardens,3219.0
+74,Starrett City,4373.0
+184,Floral Park,746.0
+25,Hunts Point,7680.0
+54,Manhattan Terrace,2958.0
+138,Forest Hills,3092.0
+266,Jamaica Hills,3493.0
+245,Greenridge,964.0
+144,East Elmhurst,5939.0
+219,Woodrow,199.0
+232,Grasmere,972.0
+37,North Riverdale,1157.0
+274,Sutton Place,11269.0
+86,Sea Gate,2421.0
+234,Dongan Hills,1343.0
+170,Springfield Gardens,4069.0
+291,Roxbury,58.0
+102,Fort Hamilton,2112.0
+70,Fort Greene,5650.0
+4,Fieldston,883.0
+227,Park Hill,2517.0
+259,Randall Manor,966.0
+204,West Brighton,2884.0
+3,Eastchester,1988.0
+241,Butler Manor,265.0
+189,Ravenswood,7752.0
+209,Mariner's Harbor,1180.0
+256,Clifton,1184.0
+66,Cobble Hill,2414.0
+230,Arlington,2404.0
+233,Old Town,865.0
+282,Fulton Ferry,585.0
+65,Brooklyn Heights,2930.0
+99,South Side,3815.0
+238,Bay Terrace,821.0
+254,Richmond Town,748.0
+199,Forest Hills Gardens,2733.0
+207,South Beach,420.0
+100,Navy Yard,1825.0
+269,Astoria Heights,2423.0
+239,Huguenot,586.0
+40,Edgewater Park,858.0
+267,Utopia,666.0
+222,Silver Lake,501.0
+193,Belle Harbor,370.0
+228,Westerleigh,1104.0
+288,Willowbrook,1060.0
+136,Howard Beach,1388.0
+159,Bellerose,1198.0
+68,Red Hook,2497.0
+296,Richmond Valley,375.0
+180,Arverne,2379.0
+249,Bulls Head,1305.0
+23,Port Morris,676.0
+215,Oakwood,690.0
+213,Travis,255.0
+243,Rossville,813.0
+290,Egbertville,228.0
+194,Rockaway Park,1269.0
+255,Shore Acres,576.0
+29,Throgs Neck,1211.0
+196,Brookville,1317.0
+195,Somerville,1353.0
+67,Carroll Gardens,2518.0
+218,Annadale,557.0
+235,Midland Beach,715.0
+287,Manor Heights,589.0
+157,Douglaston,902.0
+92,Bergen Beach,272.0
+177,Beechhurst,1088.0
+242,Charleston,233.0
+174,Broad Channel,375.0
+77,Mill Island,660.0
+237,New Dorp Beach,1102.0
+294,Prince's Bay,570.0
+78,Manhattan Beach,747.0
+248,Bloomfield,504.0
+5,Riverdale,882.0
+130,Battery Park City,767.0
+247,Chelsea,219.0
+28,Clason Point,815.0
+223,Sunnyside,522.0
+286,Dumbo,1338.0
+36,Spuyten Duyvil,677.0
+156,Little Neck,706.0
+257,Concord,563.0
+175,Breezy Point,279.0
+258,Emerson Hill,346.0
+203,Rosebank,564.0
+295,Lighthouse Hill,156.0
+182,Neponsit,188.0
+206,Todt Hill,127.0
+260,Howland Hook,35.0
