@@ -78,24 +78,12 @@ queue()
       barTooltip = d3.select("#neighborhood")
 
       barTooltip.transition()
-        .style("opacity", 0.7)
+        .style("opacity", 0.9)
 
       barTooltip.html(tip)
       .style("left", (d3.event.pageX) + "px")
       .style("top", (d3.event.pageY) + "px")
 
-      // .text(d.properties.neighborhood + "; Zindex: "+ priceByName[d.properties.neighborhood])
-
-      // var circleName = d.properties.neighborhood;
-
-      // barTooltip.transition()
-      //     .duration(500)
-      //     .style("opacity", .7);
-
-
-      // barTooltip.html(tip)
-      //     .style("left", (d3.event.pageX) + "px")
-      //     .style("top", (d3.event.pageY) + "px");
 
       /*
 
@@ -109,55 +97,53 @@ queue()
           height = 60,
           width = 200;
 
-      // var x = d3.scaleBand()
-      //     .rangeRound([0, width], .1);
+      var x = d3.scaleBand()
+          .rangeRound([0, width], .1);
 
-      // var y = d3.scaleLinear()
-      //     .range([height, 0]);
+      var y = d3.scaleLinear()
+          .range([height, 0]);
 
-      // var xAxis = d3.axisBottom(x);
+      var xAxis = d3.axisBottom(x);
 
-      // var yAxis = d3.axisLeft(y);
+      var yAxis = d3.axisLeft(y);
 
-
-      // var chart = barTooltip.append("svg")
-      //     .attr("width", width + margin.left + margin.right)
-      //     .attr("height", height + margin.top + margin.bottom)
-      //   .append("g")
-      //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var chart = barTooltip.append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         //make sure to filter to the current ID
         // x.domain(catSales.map(function(d) { return d.category; }));
-        // x.domain("price");
-        // y.domain([0,10000000]);
+        x.domain(["price", "crime"]);
+        y.domain([0,10000]);
 
-        // chart.append("g")
-        //     .attr("class", "x-axis")
-        //     .attr("transform", "translate(0," + height + ")")
-        //     .call(xAxis);
+        chart.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
 
-        // chart.append("g")
-        //     .attr("class", "y-axis")
-        //     .call(yAxis);
+        chart.append("g")
+            .attr("class", "y-axis")
+            .call(yAxis);
 
-        // chart.selectAll("#barChart")
-        //     .data(pricedata)
-        //     .enter()
-        //     .append("rect")
-        //     //apply filter for the state we're currently looking at
-        //     .filter(function(data) {
-        //       return data.region_name == circleName
-        //     })
-        //     .attr("class", "bar")
-        //     .attr("x", function(data) { return 71; })
-        //     .attr("y", function(data) {
-        //       return y(data.zindex);
-        //     })
-        //     .attr("height", function(data) {
-        //       return height - y(data.zindex);
-        //     })
-        //     .attr("width", x.bandwidth());
-
+        chart.selectAll("#barChart")
+            .data(pricedata)
+            .enter()
+            .append("rect")
+            //apply filter for the state we're currently looking at
+            .filter(function(data) {
+              return data.region_name == circleName
+            })
+            .attr("class", "bar")
+            .attr("x", function(data) { return 71; })
+            .attr("y", function(data) {
+              return y(data.zindex);
+            })
+            .attr("height", function(data) {
+              return height - y(data.zindex);
+            })
+            .attr("width", x.bandwidth());
     })
     .on("mouseleave", function(d) {
       d3.select(this)
