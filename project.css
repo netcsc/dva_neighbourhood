@@ -5,18 +5,6 @@ path {
     fill: #afafaf;
   }
 
-#neighborhood {
-    position: absolute;
-    text-align: center;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: #fff;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
-    opacity: 0;
-  }
-
   .bubble {
     fill: red; /*  PS Orange */
     fill-opacity: .3;
@@ -25,8 +13,8 @@ path {
   }
 
 
-.tooltip {
-/* position: absolute; */
+#neighborhood {
+position: absolute;
 max-width: 400px;
 height: auto;
 padding: 5px;
