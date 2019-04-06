@@ -79,6 +79,7 @@ queue()
 
       barTooltip.transition()
         .style("opacity", 0.9)
+        .attr("class", "tooltip")
 
       barTooltip.html(tip)
       .style("left", (d3.event.pageX) + "px")
@@ -93,7 +94,7 @@ queue()
 
       */
 
-      var margin = {top: 20, right: 30, bottom: 30, left: 40},
+      var margin = {top: 20, right: 30, bottom: 30, left: 55},
           height = 60,
           width = 200;
 
@@ -105,7 +106,8 @@ queue()
 
       var xAxis = d3.axisBottom(x);
 
-      var yAxis = d3.axisLeft(y);
+      var yAxis = d3.axisLeft(y).tickFormat(d3.format("s"))
+      .ticks(2);
 
       var chart = barTooltip.append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -127,6 +129,7 @@ queue()
             .attr("class", "y-axis")
             .call(yAxis);
 
+        circleName = d.properties.neighborhood
         chart.selectAll("#barChart")
             .data(pricedata)
             .enter()
@@ -136,7 +139,7 @@ queue()
               return data.region_name == circleName
             })
             .attr("class", "bar")
-            .attr("x", function(data) { return 71; })
+            .attr("x", function(data) { return 20; })
             .attr("y", function(data) {
               return y(data.zindex);
             })
