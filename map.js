@@ -17,11 +17,10 @@ queue()
   .defer(d3.json, "nyc.json") // read geo data for nyc
   .defer(d3.csv, "NY_neighborhoods_zillow_index.csv") // read housing data
   .defer(d3.csv,"mock_crime_dataset.csv")
-  .defer(d3.csv, "cate.csv")
   //TODO read crime data
   .await(ready);
 
-  function ready(error, nyc, pricedata, crime, catSales) {
+  function ready(error, nyc, pricedata, crime) {
     if (error) throw error;
 
     var priceByName = {}
