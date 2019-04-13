@@ -14,7 +14,7 @@ var color = d3.scaleThreshold()
     .range(colorbrewer.Greens[9]);
 	
 
-	console.log(color.domain());
+	//console.log(color.domain());
 
 var radius = d3.scaleSqrt()
   .domain([0, 1e6])
@@ -40,8 +40,6 @@ function showToolTip(d, priceByName, crimeByName, pricedata) {
 	var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
 	var crimeIndex = crimeIdxScale(crimeByName[d.properties.neighborhood]);
 	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
-	
-	console.log(livingIndex);
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
   tip = tip+"<h4>borough: " + d.properties.borough  + "<h4>";
@@ -168,13 +166,6 @@ queue()
 
     });
 	
-
-    var crimeByName = {}
-    crime.forEach(function(d){
-      crimeByName[d.region_name] = + d.Crime_Index;
-    });
-
-
 
     function formatSales(val) {
       var prefix = d3.formatPrefix(val),
