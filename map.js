@@ -30,7 +30,7 @@ var barTooltip = d3.select("#neighborhood")
 function showToolTip(d, priceByName, crimeByName, pricedata) {
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
-  tip = tip+"<h4>borough:" + d.properties.borough  + "<h4>";
+  tip = tip+"<h4>borough: " + d.properties.borough  + "<h4>";
   tip = tip+"<strong>Price:</strong> $" + formatPrice(priceByName[d.properties.neighborhood.toUpperCase()]) + "<br/>";
   tip = tip+"<strong>Crime:</strong> " + formatNum(radius(crimeByName[d.properties.neighborhood]))+ "<br/>";
   tip = tip+"<h4>Category : Price</h4>";
