@@ -19,6 +19,14 @@ var color = d3.scaleThreshold()
 var radius = d3.scaleSqrt()
   .domain([0, 1e6])
   .range([0, 10]);
+  
+var crimeIdxScale = d3.scaleLinear()
+  .domain([0, 1e6])
+  .range([0, 10]).clamp(true);
+  
+var priceIdxScale = d3.scaleLinear()
+  .domain([100000, 1500000])
+  .range([0, 10]).clamp(true);
 
 var formatPrice = d3.format(".2s");
 var formatNum = d3.format(".1f");
@@ -29,12 +37,19 @@ var barTooltip = d3.select("#neighborhood")
 
 function showToolTip(d, priceByName, crimeByName, pricedata) {
 	
+	var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
+	var crimeIndex = crimeIdxScale(crimeByName[d.properties.neighborhood]);
+	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
+	
+	console.log(livingIndex);
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
   tip = tip+"<h4>borough: " + d.properties.borough  + "<h4>";
-  tip = tip+"<strong>Price:</strong> $" + formatPrice(priceByName[d.properties.neighborhood.toUpperCase()]) + "<br/>";
-  tip = tip+"<strong>Crime:</strong> " + formatNum(radius(crimeByName[d.properties.neighborhood]))+ "<br/>";
-  tip = tip+"<h4>Category : Price</h4>";
+  tip = tip+"<strong>Avg Sale Price of 2018:</strong> $" + formatPrice(priceByName[d.properties.neighborhood.toUpperCase()]) + "<br/>";
+  tip = tip+"<strong>Price Index:</strong> " + formatNum(priceIndex)+ "<br/>";
+  tip = tip+"<strong>Crime Index:</strong> " + formatNum(crimeIndex)+ "<br/>";
+  tip = tip+"<strong>Living Index:</strong> " + formatNum(livingIndex)+ "<br/>";
+  //tip = tip+"<h4>Category : Price</h4>";
 
 
   barTooltip.transition()
@@ -126,7 +141,7 @@ g.append("text")
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
-    .text("Average selling price");
+    .text("Average sale price");
 	
 g.call(d3.axisLeft(y)
     .tickSize(13)
