@@ -10,11 +10,11 @@ var y = d3.scaleLinear()
 
 
 var color = d3.scaleThreshold()
-    .domain(d3.range(100000, 1000000, 100000))
+    .domain(d3.range(300000, 1650000, 150000))
     .range(colorbrewer.Greens[9]);
 	
 
-	//console.log(color.domain());
+	console.log(color.domain());
 
 var radius = d3.scaleSqrt()
   .domain([0, 1e6])
@@ -28,6 +28,7 @@ var formatRatio = d3.format("%");
 var barTooltip = d3.select("#neighborhood")
 
 function showToolTip(d, priceByName, crimeByName, pricedata) {
+	
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
   tip = tip+"<h4>borough: " + d.properties.borough  + "<h4>";
@@ -138,7 +139,7 @@ g.call(d3.axisLeft(y)
 //read in data
 queue()
   .defer(d3.json, "nyc.json") // read geo data for nyc
-  .defer(d3.csv, "export2018_cleaned.csv") // read housing data
+  .defer(d3.csv, "NY_neighborhood_avg_sales.csv") // read housing data
   .defer(d3.csv,"mock_crime_dataset.csv")
   //TODO read crime data
   .await(ready);
@@ -151,6 +152,7 @@ queue()
       priceByName[d.region_name] = + d.average_sale_price;
 
     });
+	
 
     var crimeByName = {}
     crime.forEach(function(d){
