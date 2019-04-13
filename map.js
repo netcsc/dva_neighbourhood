@@ -18,7 +18,7 @@ var color = d3.scaleThreshold()
 
 var radius = d3.scaleSqrt()
   .domain([0, 1e6])
-  .range([0, 15]);
+  .range([0, 10]);
 
 var formatPrice = d3.format(".2s");
 var formatNum = d3.format(".1f");
@@ -96,7 +96,7 @@ function showToolTip(d, priceByName, crimeByName, pricedata) {
         .attr("height", function(data) {
           return height - y(data.average_sale_price);
         })
-        .attr("width", x.bandwidth()-50);
+        .attr("width", 0.5*x.bandwidth());
 }
 // http://data.beta.nyc//dataset/0ff93d2d-90ba-457c-9f7e-39e47bf2ac5f/resource/35dd04fb-81b3-479b-a074-a27a37888ce7/download/d085e2f8d0b54d4590b1e7d1f35594c1pediacitiesnycneighborhoods.geojson
 
