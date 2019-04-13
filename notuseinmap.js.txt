@@ -1,0 +1,26 @@
+    var crimeByName = {}
+    crime.forEach(function(d){
+      crimeByName[d.region_name] = + d.Crime_Index;
+    });
+
+    var crimeIdxScale = d3.scaleLinear()
+      .domain([0, 1e6])
+      .range([0, 10]).clamp(true);
+  
+    var priceIdxScale = d3.scaleLinear()
+      .domain([100000, 1500000])
+      .range([0, 10]).clamp(true);
+		
+    var priceIdx = {}
+	var crimeIdx = {}
+    nyc.features.forEach(function(d){
+      var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
+  	  var crimeIndex = crimeIdxScale(crimeByName[d.properties.neighborhood]);
+  	  var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
+	  
+	  priceIdx[d.properties.neighborhood] = priceIndex;
+	  crimeIdx[d.properties.neighborhood] = crimeIndex;
+    });
+	
+	console.log(priceIdx);
+	console.log(crimeIdx);

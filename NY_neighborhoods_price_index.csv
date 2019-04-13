@@ -1,0 +1,267 @@
+region_name,price_index
+Allerton,NaN
+Alley Pond Park,NaN
+Arden Heights,2.433021072857143
+Arlington,NaN
+Arrochar,3.244236190714285
+Arverne,2.517891762142857
+Astoria,8.725829428571428
+Bath Beach,5.899528571428572
+Battery Park City,NaN
+Bay Ridge,8.160037921428572
+Bay Terrace,NaN
+Bay Terrace, Staten Island,NaN
+Baychester,2.8285811628571427
+Bayside,4.952025258571428
+Bayswater,NaN
+Bedford-Stuyvesant,NaN
+Belle Harbor,5.282408048571429
+Bellerose,4.102431543571429
+Belmont,10
+Bensonhurst,7.277220114285715
+Bergen Beach,4.391893765
+Bloomfield,8.798511907142856
+Boerum Hill,10
+Borough Park,9.931667571428571
+Breezy Point,2.5207641192857144
+Briarwood,2.6938550135714285
+Brighton Beach,3.634501577857143
+Broad Channel,1.3894540292857145
+Bronx Park,10
+Bronxdale,3.547529562857142
+Brooklyn Heights,10
+Brownsville,3.847553513571429
+Bull's Head,NaN
+Bushwick,7.739493892857143
+Cambria Heights,2.585488214285714
+Canarsie,3.087089759285714
+Carroll Gardens,10
+Castle Hill,3.9673501150000003
+Castleton Corners,3.5661799107142853
+Central Park,NaN
+Charleston,NaN
+Chelsea,10
+Chelsea, Staten Island,NaN
+Chinatown,10
+City Island,2.9540573592857147
+Civic Center,10
+Claremont Village,NaN
+Clason Point,NaN
+Clifton,NaN
+Clinton Hill,8.879476221428572
+Co-op City,10
+Cobble Hill,10
+College Point,7.263846485714285
+Columbia St,NaN
+Concord,1.8866631871428574
+Concourse,10
+Concourse Village,NaN
+Coney Island,6.898286914285715
+Corona,5.36095446
+Country Club,3.1518697299999996
+Crotona Park,6.4323061
+Crown Heights,10
+Cunningham Park,NaN
+Cypress Hills,4.447439005714286
+DUMBO,NaN
+Ditmars Steinway,NaN
+Dongan Hills,3.7610961035714285
+Douglaston,4.050205872142857
+Downtown Brooklyn,NaN
+Dyker Heights,7.607898642857144
+East Elmhurst,4.879726142142856
+East Flatbush,4.502828077857143
+East Harlem,10
+East Morrisania,NaN
+East New York,4.212443587857143
+East Village,10
+Eastchester,NaN
+Edenwald,NaN
+Edgemere,NaN
+Ellis Island,NaN
+Elmhurst,8.527663092857145
+Eltingville,3.671369742142857
+Emerson Hill,5.7195255099999995
+Far Rockaway,4.393719610000001
+Ferry Point Park,NaN
+Fieldston,5.8588706564285715
+Financial District,NaN
+Flatbush,8.947304435714287
+Flatiron District,NaN
+Flatlands,2.537064705714286
+Floral Park,4.063422867857143
+Floyd Bennett Field,NaN
+Flushing,5.025673457857143
+Flushing Meadows Corona Park,2.328021977857143
+Fordham,10
+Forest Hills,3.6317999542857144
+Forest Park,NaN
+Fort Greene,10
+Fort Hamilton,NaN
+Fort Wadsworth,NaN
+Fresh Meadows,5.230692007142857
+Freshkills Park,NaN
+Gerritsen Beach,2.3242117235714286
+Glen Oaks,2.346415275
+Glendale,4.008079244285715
+Governors Island,NaN
+Gowanus,10
+Gramercy,10
+Graniteville,NaN
+Grant City,2.4899230485714288
+Gravesend,5.580139839285715
+Great Kills,3.125719239285715
+Great Kills Park,NaN
+Green-Wood Cemetery,NaN
+Greenpoint,10
+Greenwich Village,10
+Grymes Hill,2.3793482142857143
+Harlem,10
+Hart Island,NaN
+Hell's Kitchen,NaN
+Highbridge,7.688124214285713
+Hoffman Island,NaN
+Hollis,4.274969297857142
+Hollis Hills,4.522940135714285
+Holliswood,3.0537296635714286
+Howard Beach,2.194654259285714
+Howland Hook,NaN
+Huguenot,4.620737973571428
+Hunts Point,8.30196812142857
+Inwood,7.483512699999999
+Jackson Heights,5.029808175
+Jamaica,8.897047157142858
+Jamaica Bay,1.7687620535714286
+Jamaica Estates,7.218817514285715
+Jamaica Hills,4.466899905
+John F. Kennedy International Airport,NaN
+Kensington,10
+Kew Gardens,3.3418333857142857
+Kew Gardens Hills,NaN
+Kingsbridge,3.9309396521428575
+Kips Bay,8.301134742857144
+LaGuardia Airport,NaN
+Latourette Park,NaN
+Laurelton,3.0077748414285717
+Liberty Island,NaN
+Lighthouse Hill,NaN
+Little Italy,10
+Little Neck,4.5375925342857135
+Long Island City,10
+Longwood,6.179882054285715
+Lower East Side,10
+Manhattan Beach,9.163449692857142
+Marble Hill,NaN
+Marine Park,3.890460320714286
+Mariners Harbor,2.4578333221428568
+Maspeth,10
+Melrose,10
+Middle Village,5.155010417857142
+Midland Beach,2.706906
+Midtown,10
+Midwood,6.393300023571429
+Mill Basin,7.380731342857143
+Morningside Heights,10
+Morris Heights,7.688124214285713
+Morris Park,3.3957936135714286
+Morrisania,6.179882054285715
+Mott Haven,10
+Mount Eden,10
+Mount Hope,10
+Murray Hill,10
+Navy Yard,10
+Neponsit,6.980251021428571
+New Brighton,2.4804206985714283
+New Dorp,3.4737189442857144
+New Dorp Beach,NaN
+New Springville,2.968404293571429
+NoHo,NaN
+Nolita,NaN
+North Brother Island,NaN
+North Riverdale,NaN
+Norwood,10
+Oakwood,3.588856390714285
+Olinville,NaN
+Ozone Park,3.4775410071428574
+Park Hill,NaN
+Park Slope,10
+Parkchester,1.3512
+Pelham Bay,NaN
+Pelham Bay Park,3.3197502392857143
+Pelham Gardens,9.124621285714285
+Pelham Islands,NaN
+Pleasant Plains,3.6058017857142852
+Plum Beach,NaN
+Port Ivory,3.166626360714286
+Port Morris,10
+Port Richmond,2.19412129
+Prince's Bay,NaN
+Prospect Heights,10
+Prospect Park,NaN
+Prospect-Lefferts Gardens,NaN
+Queens Village,2.9840896121428573
+Randall Manor,NaN
+Randall's Island,NaN
+Red Hook,10
+Rego Park,9.976352028571428
+Richmond Hill,4.138190935
+Richmondtown,4.903054385714285
+Ridgewood,7.516868949999999
+Rikers Island,NaN
+Riverdale,2.9011948807142858
+Rockaway Beach,NaN
+Rockaway Park,3.8981170635714286
+Roosevelt Island,7.368186464285714
+Rosebank,4.864905265
+Rosedale,3.1606282350000003
+Rossville,3.3003688264285715
+Schuylerville,3.3197502392857143
+Sea Gate,NaN
+Sheepshead Bay,4.355659837857143
+Shore Acres,NaN
+Silver Lake,3.6987551950000004
+SoHo,10
+Soundview,3.1273980664285714
+South Beach,4.074583218571429
+South Brother Island,NaN
+South Ozone Park,3.577540306428571
+South Slope,NaN
+Springfield Gardens,3.2829840942857147
+Spuyten Duyvil,NaN
+St. Albans,2.701314046428571
+St. George,NaN
+Stapleton,2.736031242857143
+Stuyvesant Town,NaN
+Sunnyside,3.4892909521428566
+Sunset Park,9.156574757142856
+Theater District,NaN
+Throgs Neck,2.969302022142857
+Todt Hill,9.941142592857142
+Tompkinsville,2.431000952142857
+Tottenville,4.181000485714286
+Tremont,NaN
+Tribeca,10
+Two Bridges,NaN
+Unionport,3.9673501150000003
+University Heights,NaN
+Upper East Side,10
+Upper West Side,10
+Van Cortlandt Park,0.6776785714285715
+Van Nest,3.3957936135714286
+Vinegar Hill,NaN
+Wakefield,3.7426086764285715
+Washington Heights,NaN
+West Brighton,2.615432715714286
+West Farms,NaN
+West Village,NaN
+Westchester Square,NaN
+Westerleigh,3.4181186599999998
+Whitestone,5.133103583571429
+Williamsbridge,3.437027201428571
+Williamsburg,10
+Willowbrook,3.7080990657142854
+Windsor Terrace,7.275891514285714
+Woodhaven,4.120287202142857
+Woodlawn,1.9925199064285715
+Woodrow,3.8463388057142858
+Woodside,5.1115377807142846

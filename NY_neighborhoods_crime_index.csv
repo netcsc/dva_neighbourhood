@@ -1,0 +1,267 @@
+region_name,crime_index
+Allerton,NaN
+Alley Pond Park,NaN
+Arden Heights,3.488
+Arlington,NaN
+Arrochar,3.971
+Arverne,2.9909999999999997
+Astoria,6.381
+Bath Beach,5.686
+Battery Park City,NaN
+Bay Ridge,7.3839999999999995
+Bay Terrace,3.932
+Bay Terrace, Staten Island,NaN
+Baychester,3.265
+Bayside,7.167
+Bayswater,NaN
+Bedford-Stuyvesant,NaN
+Belle Harbor,7.114000000000001
+Bellerose,4.9559999999999995
+Belmont,0.02
+Bensonhurst,6.667999999999999
+Bergen Beach,6.425
+Bloomfield,0.02
+Boerum Hill,9.757
+Borough Park,7.429
+Breezy Point,0.02
+Briarwood,4.397
+Brighton Beach,6.170999999999999
+Broad Channel,3.433
+Bronx Park,0.02
+Bronxdale,NaN
+Brooklyn Heights,0.02
+Brownsville,3.086
+Bull's Head,NaN
+Bushwick,5.803000000000001
+Cambria Heights,3.847
+Canarsie,3.5199999999999996
+Carroll Gardens,9.734
+Castle Hill,3.3739999999999997
+Castleton Corners,4.451
+Central Park,0.02
+Charleston,0.02
+Chelsea,0.02
+Chelsea, Staten Island,NaN
+Chinatown,0.02
+City Island,4.182
+Civic Center,NaN
+Claremont Village,NaN
+Clason Point,3.0540000000000003
+Clifton,3.289
+Clinton Hill,8.129999999999999
+Co-op City,0.02
+Cobble Hill,9.279
+College Point,5.426
+Columbia St,NaN
+Concord,NaN
+Concourse,3.2329999999999997
+Concourse Village,NaN
+Coney Island,4.311
+Corona,4.1610000000000005
+Country Club,4.406
+Crotona Park,NaN
+Crown Heights,7.95
+Cunningham Park,NaN
+Cypress Hills,NaN
+DUMBO,10
+Ditmars Steinway,NaN
+Dongan Hills,3.625
+Douglaston,NaN
+Downtown Brooklyn,NaN
+Dyker Heights,7.461
+East Elmhurst,5.449000000000001
+East Flatbush,3.836
+East Harlem,8.362
+East Morrisania,NaN
+East New York,3.2329999999999997
+East Village,10
+Eastchester,3.666
+Edenwald,NaN
+Edgemere,NaN
+Ellis Island,NaN
+Elmhurst,4.431
+Eltingville,4.239
+Emerson Hill,4.971
+Far Rockaway,0.00023
+Ferry Point Park,NaN
+Fieldston,0.02
+Financial District,10
+Flatbush,8.533
+Flatiron District,0.02
+Flatlands,4.209
+Floral Park,NaN
+Floyd Bennett Field,0.02
+Flushing,5.716
+Flushing Meadows Corona Park,0.02
+Fordham,0.02
+Forest Hills,0.00043999999999999996
+Forest Park,NaN
+Fort Greene,9.079
+Fort Hamilton,7.104
+Fort Wadsworth,0.02
+Fresh Meadows,7.1850000000000005
+Freshkills Park,NaN
+Gerritsen Beach,3.7199999999999998
+Glen Oaks,5.84
+Glendale,4.879
+Governors Island,0.02
+Gowanus,8.487
+Gramercy,3.2329999999999997
+Graniteville,2.741
+Grant City,3.916
+Gravesend,7.538
+Great Kills,4.106
+Great Kills Park,NaN
+Green-Wood Cemetery,NaN
+Greenpoint,7.763999999999999
+Greenwich Village,0.02
+Grymes Hill,4.575
+Harlem,3.2329999999999997
+Hart Island,NaN
+Hell's Kitchen,0.02
+Highbridge,NaN
+Hoffman Island,NaN
+Hollis,3.899
+Hollis Hills,NaN
+Holliswood,8.891
+Howard Beach,5.550000000000001
+Howland Hook,NaN
+Huguenot,5.507999999999999
+Hunts Point,0.02
+Inwood,0.02
+Jackson Heights,4.928
+Jamaica,3.4350000000000005
+Jamaica Bay,NaN
+Jamaica Estates,8.949
+Jamaica Hills,5.5649999999999995
+John F. Kennedy International Airport,0.02
+Kensington,6.97
+Kew Gardens,5.286999999999999
+Kew Gardens Hills,5.878
+Kingsbridge,4.157
+Kips Bay,NaN
+LaGuardia Airport,NaN
+Latourette Park,NaN
+Laurelton,3.8729999999999998
+Liberty Island,NaN
+Lighthouse Hill,7.884
+Little Italy,10
+Little Neck,NaN
+Long Island City,NaN
+Longwood,0.02
+Lower East Side,3.2329999999999997
+Manhattan Beach,0.02
+Marble Hill,0.02
+Marine Park,4.914
+Mariners Harbor,NaN
+Maspeth,5.57
+Melrose,2.359
+Middle Village,5.836
+Midland Beach,3.2940000000000005
+Midtown,0.02
+Midwood,7.306
+Mill Basin,9.64
+Morningside Heights,0.02
+Morris Heights,0.02
+Morris Park,0.02
+Morrisania,NaN
+Mott Haven,3.2329999999999997
+Mount Eden,NaN
+Mount Hope,NaN
+Murray Hill,0.02
+Navy Yard,NaN
+Neponsit,8.27
+New Brighton,3.222
+New Dorp,4.638
+New Dorp Beach,3.4010000000000002
+New Springville,4.196
+NoHo,0.02
+Nolita,NaN
+North Brother Island,NaN
+North Riverdale,0.02
+Norwood,0.02
+Oakwood,3.9979999999999998
+Olinville,NaN
+Ozone Park,3.936
+Park Hill,2.6679999999999997
+Park Slope,9.527
+Parkchester,1.031
+Pelham Bay,3.7369999999999997
+Pelham Bay Park,0.02
+Pelham Gardens,0.02
+Pelham Islands,NaN
+Pleasant Plains,4.942
+Plum Beach,NaN
+Port Ivory,2.726
+Port Morris,0.02
+Port Richmond,3.024
+Prince's Bay,5.433
+Prospect Heights,8.587
+Prospect Park,0.02
+Prospect-Lefferts Gardens,NaN
+Queens Village,4.026
+Randall Manor,5.03
+Randall's Island,NaN
+Red Hook,0.02
+Rego Park,6.017
+Richmond Hill,4.1610000000000005
+Richmondtown,NaN
+Ridgewood,4.84
+Rikers Island,NaN
+Riverdale,0.02
+Rockaway Beach,3.0549999999999997
+Rockaway Park,0.02
+Roosevelt Island,0.02
+Rosebank,3.417
+Rosedale,3.814
+Rossville,3.387
+Schuylerville,NaN
+Sea Gate,NaN
+Sheepshead Bay,5.813000000000001
+Shore Acres,0.02
+Silver Lake,0.02
+SoHo,0.02
+Soundview,2.987
+South Beach,3.671
+South Brother Island,NaN
+South Ozone Park,3.856
+South Slope,NaN
+Springfield Gardens,3.4410000000000003
+Spuyten Duyvil,0.02
+St. Albans,3.631
+St. George,3.2140000000000004
+Stapleton,2.746
+Stuyvesant Town,0.02
+Sunnyside,4.565
+Sunset Park,3.2329999999999997
+Theater District,NaN
+Throgs Neck,NaN
+Todt Hill,10
+Tompkinsville,2.782
+Tottenville,4.751
+Tremont,3.2329999999999997
+Tribeca,10
+Two Bridges,NaN
+Unionport,0.02
+University Heights,3.2329999999999997
+Upper East Side,3.2329999999999997
+Upper West Side,10
+Van Cortlandt Park,0.02
+Van Nest,0.02
+Vinegar Hill,0.02
+Wakefield,3.365
+Washington Heights,5.734
+West Brighton,4.054
+West Farms,0.02
+West Village,0.02
+Westchester Square,NaN
+Westerleigh,4.234
+Whitestone,7.357
+Williamsbridge,3.207
+Williamsburg,3.2329999999999997
+Willowbrook,0.02
+Windsor Terrace,8.176
+Woodhaven,3.9619999999999997
+Woodlawn,4.2
+Woodrow,4.6899999999999995
+Woodside,5.577
