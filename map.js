@@ -18,10 +18,10 @@ var color = d3.scaleThreshold()
 
 var radius = d3.scaleSqrt()
   .domain([0, 1e6])
-  .range([0, 10]);
+  .range([0, 100]);
   
 var crimeIdxScale = d3.scaleLinear()
-  .domain([0, 1e6])
+  .domain([0, 40000])
   .range([0, 10]).clamp(true);
   
 var priceIdxScale = d3.scaleLinear()
@@ -153,7 +153,7 @@ g.call(d3.axisLeft(y)
 queue()
   .defer(d3.json, "nyc.json") // read geo data for nyc
   .defer(d3.csv, "NY_neighborhood_avg_sales.csv") // read housing data
-  .defer(d3.csv,"mock_crime_dataset.csv")
+  .defer(d3.csv,"crime_index_per_neighborhood_data/crime_2017.csv")
   //TODO read crime data
   .await(ready);
 
@@ -169,8 +169,10 @@ queue()
 
     var crimeByName = {}
     crime.forEach(function(d){
-      crimeByName[d.region_name] = + d.Crime_Index;
+      crimeByName[d.Neighborhood] = + d.Crime_Rate;
     });
+	
+	console.log(crimeByName['Midtown'])
 
 
     function formatSales(val) {
