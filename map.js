@@ -167,6 +167,12 @@ queue()
     });
 	
 
+    var crimeByName = {}
+    crime.forEach(function(d){
+      crimeByName[d.region_name] = + d.Crime_Index;
+    });
+
+
     function formatSales(val) {
       var prefix = d3.formatPrefix(val),
           format = d3.format(".1f");
