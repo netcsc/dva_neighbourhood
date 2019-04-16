@@ -35,10 +35,14 @@ var formatRatio = d3.format("%");
 
 var barTooltip = d3.select("#neighborhood")
 
-function showToolTip(d, priceByName, crimeByName, pricedata, crime2017) {
+function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
 
-	var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
-	var crimeIndex = crimeIdxScale(crimeByName[d.properties.neighborhood]);
+  var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
+
+  var crimeIndex;
+  if (crimedata.Neighborhood == d.properties.neighborhood && crimedata.Year == default_year){
+    crimeIndex = crimeIdxScale(crimedata.Crime_Rate)
+  }
 	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
@@ -112,10 +116,6 @@ function showToolTip(d, priceByName, crimeByName, pricedata, crime2017) {
         })
         .attr("width", 0.5*x.bandwidth());
 
-        var margin = {top: 20, right: 30, bottom: 30, left: 55},
-        height = 60,
-        width = 200;
-
     // Add crime bar chart
     var crime_x = d3.scaleBand()
         .rangeRound([0, width], 0.1);
@@ -136,8 +136,8 @@ function showToolTip(d, priceByName, crimeByName, pricedata, crime2017) {
 
     //make sure to filter to the current ID
     // x.domain(catSales.map(function(d) { return d.category; }));
-    crime_x.domain(["2017", "2016"]);
-    crime_y.domain([0,10000]);
+    crime_x.domain(["2017", "2016", "2015"]);
+    crime_y.domain([0,40000]);
 
     chart.append("g")
         .attr("class", "x-axis")
@@ -151,14 +151,16 @@ function showToolTip(d, priceByName, crimeByName, pricedata, crime2017) {
     circleName = d.properties.neighborhood;
     // console.log(crime2017);
     chart.selectAll("#barChart")
-        .data(crime2017)
+        .data(crimedata)
         .enter()
         .append("rect")
         .filter(function(data) {
           return data.Neighborhood == circleName;
         })
         .attr("class", "bar")
-        .attr("x", function(data) { return 20; })
+        .attr("x", function(data) {
+          console.log(data)
+          return 10 + crime_x(data.Year); })
         .attr("y", function(data) {
           return crime_y(data.Crime_Rate);
         })
@@ -168,9 +170,12 @@ function showToolTip(d, priceByName, crimeByName, pricedata, crime2017) {
         .attr("width", 0.5*x.bandwidth());
 }
 
-function getCrimeBubbleRadius(d, crimeByName, year){
-  if (crimeByName && crimeByName[d.properties.neighborhood] && crimeByName[d.properties.neighborhood][2017]) {
-    return radius(crimeByName[d.properties.neighborhood][2017]);
+function getCrimeBubbleRadius(d, crimedata, year){
+  // console.log(crimedata);
+  for (crime in crimedata){
+    if (crimedata[crime].Neighborhood == d.properties.neighborhood && crimedata[crime].Year == year){
+      return radius(crimedata[crime].Crime_Rate);
+    }
   }
   return 0;
 }
@@ -215,12 +220,10 @@ g.call(d3.axisLeft(y)
 queue()
   .defer(d3.json, "nyc.json") // read geo data for nyc
   .defer(d3.csv, "NY_neighborhood_avg_sales_2018.csv") // read housing data
-  .defer(d3.csv,"crime_index_per_neighborhood_data/crime_2017.csv")
-  .defer(d3.csv,"crime_index_per_neighborhood_data/crime_2016.csv")
-  //TODO read crime data
+  .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
   .await(ready);
 
-  function ready(error, nyc, pricedata, crime2017, crime2016) {
+  function ready(error, nyc, pricedata, crimedata) {
     if (error) throw error;
 
     var priceByName = {}
@@ -230,23 +233,23 @@ queue()
     });
 
 
-    var crimeByName = {};
+    // var crimeByName = {};
 
-    crime2017.forEach(function(d){
-      crimeByName[d.Neighborhood]={};
+    // crime2017.forEach(function(d){
+    //   crimeByName[d.Neighborhood]={};
 
-      crimeByName[d.Neighborhood][2017] = + d.Crime_Rate;
-    });
-    crime2016.forEach(function(d){
-      crimeByName[d.Neighborhood][2016] = + d.Crime_Rate;
-    });
+    //   crimeByName[d.Neighborhood][2017] = + d.Crime_Rate;
+    // });
+    // crime2016.forEach(function(d){
+    //   crimeByName[d.Neighborhood][2016] = + d.Crime_Rate;
+    // });
 
-	console.log(crimeByName);
-    function formatSales(val) {
-      var prefix = d3.formatPrefix(val),
-          format = d3.format(".1f");
-      return format(prefix.scale(val)) + prefix.symbol;
-    }
+	// console.log(crimeByName);
+  //   function formatSales(val) {
+  //     var prefix = d3.formatPrefix(val),
+  //         format = d3.format(".1f");
+  //     return format(prefix.scale(val)) + prefix.symbol;
+  //   }
 
     // var barTooltip = d3.select("body").append("div")
     // .attr("class", "tooltip")
@@ -269,7 +272,7 @@ queue()
       return color(priceByName[d.properties.neighborhood.toUpperCase()]);
     })
     .on("mouseenter",function(d) {
-      showToolTip(d, priceByName, crimeByName, pricedata, crime2017);
+      showToolTip(d, priceByName, pricedata, crimedata, "2017");
     })
     .on("mouseout", function(d) {
 
@@ -286,10 +289,10 @@ queue()
       .enter().append("circle")
       .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
       .attr("r",function(d) {
-        return getCrimeBubbleRadius(d, crimeByName, 2017);
+        return getCrimeBubbleRadius(d, crimedata, "2017");
       })
       .on("mouseenter",function(d) {
-        showToolTip(d, priceByName, crimeByName, pricedata, crime2017);
+        showToolTip(d, priceByName, pricedata, crimedata, "2017");
       })
       .on("mouseout", function(d) {
 
