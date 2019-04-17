@@ -21,3 +21,9 @@ def seed_db():
         cmd = """COPY borough(borough_id,region_name,name,transaction_volume,property_count,average_sale_price) FROM STDIN WITH (FORMAT CSV, HEADER TRUE, NULL 'NA')"""
         cursor.copy_expert(cmd, f)
         conn.commit()
+
+if __name__ == "db":
+    from sqlalchemy import create_engine
+    recreate_db()
+    seed_db()
+    

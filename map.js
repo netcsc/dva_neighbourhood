@@ -251,7 +251,7 @@ g.call(d3.axisLeft(y)
 //read in data
 queue()
   .defer(d3.json, "nyc.json") // read geo data for nyc
-  .defer(d3.csv, "NY_neighborhood_avg_sales_all.csv") // read housing data
+  .defer(d3.json, "http://54.89.25.157/boroughs") // read housing data
   .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
   .await(ready);
 
