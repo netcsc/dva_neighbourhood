@@ -13,6 +13,22 @@ This is the repo for CSE 6242 Data and Visual Analytics project. A place for pro
 | Neal Manaktola| nmanaktola3@gatech.edu |Toronto|EST|Weekday 7p.m. - 10 p.m. Sat 1 p.m. - 10 p.m. Sunday 1 p.m. - 10 p.m.|
 | Yuying Wang| ywang3391@gatech.edu  |China|CST(EST+13hrs)|Weekday and weekends 9a.m. - 11a.m; 9p.m. - 12a.m|
 
+## API
+
+The API returns the housing data from postgres db. The database has been seeded with the data as specified in NY_neighborhood_avg_sales_2018.csv.
+
+The API app is built in python and has dependencies as specified in the requirements.txt.
+If you want to run this API locally:
+
+1. Install virtualenv https://docs.python-guide.org/dev/virtualenvs/
+2. Create virtual env `virtualenv .venv`
+3. Install dependencies `pip install -r requirements.txt`
+4. Please note you need to have postgresql installed as well.
+
+Server IP: `54.89.25.157`
+Endpoints: `/boroughs` to get the aggregate housing data i.e `http://54.89.25.157/boroughs`
+
+
 ## Project Requirement
 [link](https://docs.google.com/document/d/e/2PACX-1vTc_2yqk8QfK-SkdDPxJVJcM31kogiVFsZKOuJ2qHHnRn5aaA4r74u-gErMTsE8jGVoYeVB83MtjFTN/pub)
 
