@@ -28,6 +28,11 @@ If you want to run this API locally:
 Server IP: `54.89.25.157`
 Endpoints: `/boroughs` to get the aggregate housing data i.e `http://54.89.25.157/boroughs`
 
+### Test API locally
+
+1. Start local postgrest database `docker run --name postgres -e POSTGRES_PASSWORD=cse6242 -p 5432:5432 -d postgres`
+1. Create a database in postgres CREATE DATABASE neighbourhood;
+1. Start the API server `Gunicorn -b 0.0.0.0:5000 app:api --reload`
 
 ## Project Requirement
 [link](https://docs.google.com/document/d/e/2PACX-1vTc_2yqk8QfK-SkdDPxJVJcM31kogiVFsZKOuJ2qHHnRn5aaA4r74u-gErMTsE8jGVoYeVB83MtjFTN/pub)
@@ -55,11 +60,11 @@ Everyone :-)
 
 #### Action item
 
-1. Schedule next meeting on Feb 1 for project idea sync up 
+1. Schedule next meeting on Feb 1 for project idea sync up
 
     *Owner*: Siwei
 
-2. Come up with 2 project ideas (1 primary and 1 backup).  
+2. Come up with 2 project ideas (1 primary and 1 backup).
 
 Please read project requirement on the website as well the Slide that Jun shared http://poloclub.gatech.edu/cse6242/2017spring/slides/CSE6242-999-project.pdf ( Thank you Jun!)
 
