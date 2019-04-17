@@ -82,7 +82,7 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
 
     //make sure to filter to the current ID
     // x.domain(catSales.map(function(d) { return d.category; }));
-    x.domain(["price", "crime"]);
+    x.domain(["2018", "2017"]);
     y.domain([0,10000]);
 
     chart.append("g")
@@ -133,7 +133,8 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
 
     //make sure to filter to the current ID
     // x.domain(catSales.map(function(d) { return d.category; }));
-    crime_x.domain(["2017", "2016", "2015"]);
+    var years = ["2017", "2016", "2015", "2014", "2013"];
+    crime_x.domain(years);
     crime_y.domain([0,40000]);
 
     chart.append("g")
@@ -156,7 +157,6 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
         })
         .attr("class", "bar")
         .attr("x", function(data) {
-          console.log(data)
           return 10 + crime_x(data.Year); })
         .attr("y", function(data) {
           return crime_y(data.Crime_Rate);
@@ -164,7 +164,7 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
         .attr("height", function(data) {
           return height - crime_y(data.Crime_Rate);
         })
-        .attr("width", 0.5*x.bandwidth());
+        .attr("width", 0.3*x.bandwidth());
 }
 
 function getCrimeBubbleRadius(d, crimedata, year){
