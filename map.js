@@ -39,10 +39,8 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
 
   var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
 
-  var crimeIndex;
-  if (crimedata.Neighborhood == d.properties.neighborhood && crimedata.Year == default_year){
-    crimeIndex = crimeIdxScale(crimedata.Crime_Rate)
-  }
+  var crimeIndex = crimeIdxScale(getCrimeData(d, crimedata, default_year));
+
 	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
@@ -51,7 +49,6 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
   tip = tip+"<strong>Price Index:</strong> " + formatNum(priceIndex)+ "<br/>";
   tip = tip+"<strong>Crime Index:</strong> " + formatNum(crimeIndex)+ "<br/>";
   tip = tip+"<strong>Living Index:</strong> " + formatNum(livingIndex)+ "<br/>";
-  //tip = tip+"<h4>Category : Price</h4>";
 
 
   barTooltip.transition()
@@ -171,14 +168,23 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
 }
 
 function getCrimeBubbleRadius(d, crimedata, year){
-  // console.log(crimedata);
+  var crime_data = getCrimeData(d, crimedata, year);
+  if (crime_data > 0 ){
+    return radius(crime_data);
+  }
+  return 0;
+}
+
+function getCrimeData(d, crimedata, year){
+   // console.log(crimedata);
   for (crime in crimedata){
     if (crimedata[crime].Neighborhood == d.properties.neighborhood && crimedata[crime].Year == year){
-      return radius(crimedata[crime].Crime_Rate);
+      return crimedata[crime].Crime_Rate;
     }
   }
   return 0;
 }
+
 // http://data.beta.nyc//dataset/0ff93d2d-90ba-457c-9f7e-39e47bf2ac5f/resource/35dd04fb-81b3-479b-a074-a27a37888ce7/download/d085e2f8d0b54d4590b1e7d1f35594c1pediacitiesnycneighborhoods.geojson
 
 var g = svg.append("g")
