@@ -160,20 +160,20 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
         .enter()
         .append("rect")
         .filter(function(data) {
-          return data.Neighborhood == circleName;
+          return data.neighborhood == circleName;
         })
         .attr("class", "bar")
         .attr("x", function(data) {
-          if(crime_x(data.Year)){
-            return 10 + crime_x(data.Year);
+          if(crime_x(data.year)){
+            return 10 + crime_x(data.year);
           }
           return -1 ;
         })
         .attr("y", function(data) {
-          return crime_y(data.Crime_Rate);
+          return crime_y(data.crime_rate);
         })
         .attr("height", function(data) {
-          return height - crime_y(data.Crime_Rate);
+          return height - crime_y(data.crime_rate);
         })
         .attr("width", 0.5*crime_x.bandwidth());
   }
@@ -190,8 +190,8 @@ function getCrimeBubbleRadius(d, crimedata, year){
 function getCrimeData(d, crimedata, year){
    // console.log(crimedata);
   for (var crime in crimedata){
-    if (crimedata[crime].Neighborhood && crimedata[crime].Neighborhood.toUpperCase() == d.properties.neighborhood.toUpperCase() && crimedata[crime].Year == year){
-      return crimedata[crime].Crime_Rate;
+    if (crimedata[crime].neighborhood && crimedata[crime].neighborhood.toUpperCase() == d.properties.neighborhood.toUpperCase() && crimedata[crime].year == year){
+      return crimedata[crime].crime_rate;
     }
   }
   return 0;
@@ -273,43 +273,13 @@ var legend = svg.append("g")
 //read in data
 queue()
   .defer(d3.json, "nyc.json") // read geo data for nyc
-  // .defer(d3.json, "http://54.89.25.157/boroughs") // read housing data
+  // .defer(d3.json, "http://localhost:5000/boroughs") // read housing data
   .defer(d3.csv, "NY_neighborhood_avg_sales_all.csv")
   .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
   .await(ready);
 
   function ready(error, nyc, pricedata, crimedata) {
     if (error) throw error;
-
-    // var priceByName = {}
-    // pricedata.forEach(function(d){
-    //   priceByName[d.region_name] = + d.average_sale_price;
-
-    // });
-
-
-    // var crimeByName = {};
-
-    // crime2017.forEach(function(d){
-    //   crimeByName[d.Neighborhood]={};
-
-    //   crimeByName[d.Neighborhood][2017] = + d.Crime_Rate;
-    // });
-    // crime2016.forEach(function(d){
-    //   crimeByName[d.Neighborhood][2016] = + d.Crime_Rate;
-    // });
-
-	// console.log(crimeByName);
-  //   function formatSales(val) {
-  //     var prefix = d3.formatPrefix(val),
-  //         format = d3.format(".1f");
-  //     return format(prefix.scale(val)) + prefix.symbol;
-  //   }
-
-    // var barTooltip = d3.select("body").append("div")
-    // .attr("class", "tooltip")
-    // .style("opacity", 0)
-    // .style("width",600);
 
     var path = d3.geoPath()
       .projection(d3.geoConicConformal()
