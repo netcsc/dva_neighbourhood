@@ -1,4 +1,4 @@
-Neighborhood_ID,Neighborhood,Crime_Rate,Year
+neighborhood_id,neighborhood,crime_rate,year
 57,East Flatbush,7021,2017
 8,Woodlawn,3193,2017
 109,East Harlem,36392,2017
