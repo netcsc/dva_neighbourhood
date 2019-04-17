@@ -12,7 +12,6 @@ path {
     stroke-width: .5px;
   }
 
-
 #neighborhood {
 position: absolute;
 max-width: 400px;
@@ -25,7 +24,7 @@ border-radius: 5px;
 -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-pointer-events: none; /* MUY IMPORTANTE! */
+pointer-events: none;
 font-family: sans-serif;
 font-size:12px;
 }
@@ -44,4 +43,14 @@ font-size:12px;
 
 .bar {
   fill: #666;
+}
+
+.legend text {
+  fill: #777;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+.legend circle {
+  fill: none;
+  stroke: #F15B2A;
 }

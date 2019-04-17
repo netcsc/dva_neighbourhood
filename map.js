@@ -16,9 +16,7 @@ var color = d3.scaleThreshold()
 
 	//console.log(color.domain());
 
-var radius = d3.scaleSqrt()
-  .domain([0, 1e6])
-  .range([0, 100]);
+
 
 var crimeIdxScale = d3.scaleLinear()
   .domain([0, 40000])
@@ -29,7 +27,7 @@ var priceIdxScale = d3.scaleLinear()
   .range([0, 10]).clamp(true);
 
 var formatPrice = d3.format(".2s");
-var formatNum = d3.format(".1f");
+var formatNum = d3.format(".1");
 
 var formatRatio = d3.format("%");
 
@@ -69,6 +67,7 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
     width = 200;
 
   if (priceIndex){
+    tip = tip+"<strong>Price trend</strong><br/>";
 
 
     var x = d3.scaleBand()
@@ -142,8 +141,6 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    //make sure to filter to the current ID
-    // x.domain(catSales.map(function(d) { return d.category; }));
     var years = ["2017", "2016", "2015", "2014", "2013"];
     crime_x.domain(years);
     crime_y.domain([0,40000]);
@@ -158,7 +155,6 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
       .call(crime_yAxis);
 
     circleName = d.properties.neighborhood;
-    // console.log(crime2017);
     chart.selectAll("#barChart")
         .data(crimedata)
         .enter()
@@ -168,10 +164,10 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
         })
         .attr("class", "bar")
         .attr("x", function(data) {
-          if( crime_x(data.Year)){
+          if(crime_x(data.Year)){
             return 10 + crime_x(data.Year);
           }
-          return 0 ;
+          return -1 ;
         })
         .attr("y", function(data) {
           return crime_y(data.Crime_Rate);
@@ -193,7 +189,7 @@ function getCrimeBubbleRadius(d, crimedata, year){
 
 function getCrimeData(d, crimedata, year){
    // console.log(crimedata);
-  for (crime in crimedata){
+  for (var crime in crimedata){
     if (crimedata[crime].Neighborhood && crimedata[crime].Neighborhood.toUpperCase() == d.properties.neighborhood.toUpperCase() && crimedata[crime].Year == year){
       return crimedata[crime].Crime_Rate;
     }
@@ -202,7 +198,7 @@ function getCrimeData(d, crimedata, year){
 }
 
 function getPriceData(d, priceData, year){
-  for (data in priceData){
+  for (var data in priceData){
     if (priceData[data].region_name && d.properties.neighborhood &&
       priceData[data].region_name.toUpperCase() == d.properties.neighborhood.toUpperCase() &&
       priceData[data].year == year){
@@ -234,7 +230,7 @@ g.selectAll("rect")
 g.append("text")
     .attr("class", "caption")
     .attr("y", y.range()[0]-10)
-    .attr("x", -6)
+    .attr("x", -20)
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
@@ -247,6 +243,32 @@ g.call(d3.axisLeft(y)
   .select(".domain")
     .remove();
 
+var radius = d3.scaleSqrt().domain([0, 4e4]).range([0, 25]);
+
+var legend = svg.append("g")
+  .attr("class", "legend")
+  .attr("transform", "translate(" + (width - 170) + "," + (height - 100) + ")")
+  .selectAll("g")
+  .data([4e3, 2e4, 4e4])
+  .enter()
+  .append("g");
+
+  legend.append("circle")
+    .attr("cy", function(d) { return -radius(d); })
+    .attr("r", radius);
+
+  legend.append("text")
+      .attr("y", function(d) { return -2 * radius(d); })
+      .attr("dy", "1.3em")
+      .text(d3.format(".1s"));
+      legend.append("text")
+      .attr("class", "caption")
+      .attr("y", y.range()[0]-80)
+      .attr("x", 0)
+      .attr("fill", "#000")
+      .attr("text-anchor", "start")
+      .attr("font-weight", "bold")
+      .text("Crime Index");
 
 //read in data
 queue()
@@ -313,21 +335,23 @@ queue()
 
     // Add crime bubble
     svg.append("g")
-      .attr("class", "bubble")
-      .selectAll("circle")
-      .data(nyc.features)
-      .enter().append("circle")
-      .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-      .attr("r",function(d) {
-        return getCrimeBubbleRadius(d, crimedata, "2017");
-      })
-      .on("mouseenter",function(d) {
-        showToolTip(d, pricedata, crimedata, "2018", "2017");
-      })
-      .on("mouseout", function(d) {
+    .attr("class", "bubble")
+    .selectAll("circle")
+    .data(nyc.features)
+    .enter().append("circle")
+    .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+    .attr("r",function(d) {
+      return getCrimeBubbleRadius(d, crimedata, "2017");
+    })
+    .on("mouseenter",function(d) {
+      showToolTip(d, pricedata, crimedata, "2018", "2017");
+    })
+    .on("mouseout", function(d) {
 
-        barTooltip.transition()
-            .duration(500)
-            .style("opacity", 0);
-      });
+      barTooltip.transition()
+          .duration(500)
+          .style("opacity", 0);
+    });
+
+
 }
