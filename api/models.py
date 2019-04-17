@@ -12,6 +12,7 @@ class Borough(Base):
     transaction_volume = Column(Float)
     property_count = Column(Float)
     average_sale_price = Column(Float)
+    year = Column(String(100))
 
     def to_json(self):
         return {
@@ -20,5 +21,23 @@ class Borough(Base):
             'name': self.name,
             'transaction_volume': self.transaction_volume,
             'property_count': self.property_count,
-            'average_sale_price': self.average_sale_price
+            'average_sale_price': self.average_sale_price,
+            'year': self.year
+        }
+
+
+class Crime(Base):
+    __tablename__= 'crime'
+    id = Column(Integer,primary_key=True)
+    neighborhood_id = Column(Integer)
+    neighborhood = Column(String(100))
+    crime_rate = Column(Integer)
+    year = Column(String(100))
+
+    def to_json(self):
+        return {
+            'neighborhood_id': self.neighborhood_id,
+            'neighborhood': self.neighborhood_id,
+            'crime_rate': self.crime_rate,
+            'year': self.year
         }
