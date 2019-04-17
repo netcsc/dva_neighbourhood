@@ -40,15 +40,21 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
   var priceIndex = priceIdxScale(priceByName[d.properties.neighborhood.toUpperCase()]);
 
   var crimeIndex = crimeIdxScale(getCrimeData(d, crimedata, default_year));
-
 	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
 
   var tip = "<h3>" + d.properties.neighborhood + "</h3>";
   tip = tip+"<h4>borough: " + d.properties.borough  + "<h4>";
-  tip = tip+"<strong>Avg Sale Price of 2018:</strong> $" + formatPrice(priceByName[d.properties.neighborhood.toUpperCase()]) + "<br/>";
-  tip = tip+"<strong>Price Index:</strong> " + formatNum(priceIndex)+ "<br/>";
-  tip = tip+"<strong>Crime Index:</strong> " + formatNum(crimeIndex)+ "<br/>";
-  tip = tip+"<strong>Living Index:</strong> " + formatNum(livingIndex)+ "<br/>";
+  if (priceIndex){
+    tip = tip+"<strong>Avg Sale Price of 2018:</strong> $" + formatPrice(priceByName[d.properties.neighborhood.toUpperCase()]) + "<br/>";
+    tip = tip+"<strong>Price Index:</strong> " + formatNum(priceIndex)+ "<br/>";
+  }
+  if (crimeIndex){
+    tip = tip+"<strong>Crime Index:</strong> " + formatNum(crimeIndex)+ "<br/>";
+  }
+  if (priceIndex && crimeIndex){
+    tip = tip+"<strong>Living Index:</strong> " + formatNum(livingIndex)+ "<br/>";
+  }
+
 
 
   barTooltip.transition()
@@ -57,62 +63,65 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
 
   barTooltip.html(tip)
   .style("left", (d3.event.pageX) + "px")
-  .style("top", (d3.event.pageY) + "px")
+  .style("top", (d3.event.pageY) + "px");
 
   var margin = {top: 20, right: 30, bottom: 30, left: 55},
-      height = 60,
-      width = 200;
+    height = 60,
+    width = 200;
 
-  var x = d3.scaleBand()
-      .rangeRound([0, width], 0.1);
+  if (priceIndex){
 
-  var y = d3.scaleLinear()
-      .range([height, 0]);
 
-  var xAxis = d3.axisBottom(x);
+    var x = d3.scaleBand()
+        .rangeRound([0, width], 0.1);
 
-  var yAxis = d3.axisLeft(y).tickFormat(d3.format("s"))
-  .ticks(2);
+    var y = d3.scaleLinear()
+        .range([height, 0]);
 
-  var chart = barTooltip.append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var xAxis = d3.axisBottom(x);
 
-    //make sure to filter to the current ID
-    // x.domain(catSales.map(function(d) { return d.category; }));
-    x.domain(["2018", "2017"]);
-    y.domain([0,10000]);
+    var yAxis = d3.axisLeft(y).tickFormat(d3.format("s"))
+    .ticks(2);
 
-    chart.append("g")
-        .attr("class", "x-axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+    var chart = barTooltip.append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    chart.append("g")
-        .attr("class", "y-axis")
-        .call(yAxis);
+      x.domain(["2018", "2017", "2016", "2015", "2014"]);
+      y.domain([0,10000]);
 
-    circleName = d.properties.neighborhood
-    chart.selectAll("#barChart")
-        .data(pricedata)
-        .enter()
-        .append("rect")
-        //apply filter for the state we're currently looking at
-        .filter(function(data) {
-          return data.region_name == circleName.toUpperCase()
-        })
-        .attr("class", "bar")
-        .attr("x", function(data) { return 20; })
-        .attr("y", function(data) {
-          return y(data.average_sale_price);
-        })
-        .attr("height", function(data) {
-          return height - y(data.average_sale_price);
-        })
-        .attr("width", 0.5*x.bandwidth());
+      chart.append("g")
+          .attr("class", "x-axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
 
+      chart.append("g")
+          .attr("class", "y-axis")
+          .call(yAxis);
+
+      circleName = d.properties.neighborhood
+      chart.selectAll("#barChart")
+          .data(pricedata)
+          .enter()
+          .append("rect")
+          //apply filter for the state we're currently looking at
+          .filter(function(data) {
+            return data.region_name == circleName.toUpperCase()
+          })
+          .attr("class", "bar")
+          .attr("x", function(data) { return 20; })
+          .attr("y", function(data) {
+            return y(data.average_sale_price);
+          })
+          .attr("height", function(data) {
+            return height - y(data.average_sale_price);
+          })
+          .attr("width", 0.5*x.bandwidth());
+  }
+
+  if (crimeIndex){
     // Add crime bar chart
     var crime_x = d3.scaleBand()
         .rangeRound([0, width], 0.1);
@@ -164,7 +173,8 @@ function showToolTip(d, priceByName, pricedata, crimedata, default_year) {
         .attr("height", function(data) {
           return height - crime_y(data.Crime_Rate);
         })
-        .attr("width", 0.3*x.bandwidth());
+        .attr("width", 0.5*crime_x.bandwidth());
+  }
 }
 
 function getCrimeBubbleRadius(d, crimedata, year){
