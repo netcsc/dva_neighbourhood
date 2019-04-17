@@ -22,9 +22,3 @@ class Borough(Base):
             'property_count': self.property_count,
             'average_sale_price': self.average_sale_price
         }
-
-if __name__ == "__main__":
-    from sqlalchemy import create_engine
-    recreate_db()
-    seed_db()
-    
