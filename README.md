@@ -5,7 +5,7 @@ This is the repo for CSE 6242 Data and Visual Analytics project. A place for pro
 
 ### Screenshots
 with both housing and crime data
-![alt text](./images/screen.png "Screen shot")
+![alt text](./images/Screen.png "Screen shot")
 
 with only housing data
 ![alt text](./images/Housing.png "housing data")
