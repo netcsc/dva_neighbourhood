@@ -27,7 +27,7 @@ If you want to run this API locally:
 
 Server IP: `54.89.25.157`
 Endpoints: `/boroughs` to get the aggregate housing data i.e `http://54.89.25.157/boroughs`
-Endpoints: `/crimes` to get the aggregate crime data i.e `http://54.89.25.157/boroughs`
+Endpoints: `/crimes` to get the aggregate crime data i.e `http://54.89.25.157/crimes`
 
 To run app locally `
 
@@ -39,9 +39,9 @@ To run app locally `
 
 ## Logging into API server
 
-It's hosted on Amazon EC2 instance. 
+It's hosted on Amazon EC2 instance.
 `ssh -i cse6242-project.pem ubuntu@ec2-54-89-25-157.compute-1.amazonaws.com`
-The ssh-key is inside the repo. The project is in the home directory. 
+The ssh-key is inside the repo. The project is in the home directory.
 
 ## Project Requirement
 [link](https://docs.google.com/document/d/e/2PACX-1vTc_2yqk8QfK-SkdDPxJVJcM31kogiVFsZKOuJ2qHHnRn5aaA4r74u-gErMTsE8jGVoYeVB83MtjFTN/pub)

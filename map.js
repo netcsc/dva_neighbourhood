@@ -1,22 +1,13 @@
 
-var svg = d3.select("svg"),
-width = +svg.attr("width"),
-height = +svg.attr("height");
-
-
 var y = d3.scaleLinear()
     .domain([100000, 1000000])
     .rangeRound([100, 360]);
 
+var width = 960, height = 720;
 
 var color = d3.scaleThreshold()
     .domain(d3.range(300000, 1650000, 150000))
     .range(colorbrewer.Greens[9]);
-
-
-	//console.log(color.domain());
-
-
 
 var crimeIdxScale = d3.scaleLinear()
   .domain([0, 40000])
@@ -27,11 +18,12 @@ var priceIdxScale = d3.scaleLinear()
   .range([0, 10]).clamp(true);
 
 var formatPrice = d3.format(".2s");
-var formatNum = d3.format(".1");
+var formatNum = d3.format(".2f");
 
 var formatRatio = d3.format("%");
 
-var barTooltip = d3.select("#neighborhood")
+var barTooltip = d3.select("#neighborhood");
+barTooltip.attr("class", "tooltip");
 
 function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_year) {
 
@@ -40,20 +32,27 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
   var crimeIndex = crimeIdxScale(getCrimeData(d, crimedata, crime_default_year));
 	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
 
-  var tip = "<h3>" + d.properties.neighborhood + "</h3>";
-  tip = tip+"<h4>borough: " + d.properties.borough  + "<h4>";
+  var tip = "<h3>" + d.properties.neighborhood + " (" + d.properties.borough + ") " + "</h3>";
+
   if (priceIndex){
-    tip = tip+"<strong>Avg Sale Price of 2018:</strong> $" + formatPrice(getPriceData(d , pricedata, price_default_year)) + "<br/>";
+    tip = tip+"<strong>Avg Sale Price of 2018:</strong> $" + formatPrice(getPriceData(d , pricedata, price_default_year)) + "<br/><br/>";
     tip = tip+"<strong>Price Index:</strong> " + formatNum(priceIndex)+ "<br/>";
   }
   if (crimeIndex){
     tip = tip+"<strong>Crime Index:</strong> " + formatNum(crimeIndex)+ "<br/>";
   }
+
   if (priceIndex && crimeIndex){
     tip = tip+"<strong>Living Index:</strong> " + formatNum(livingIndex)+ "<br/>";
   }
 
-
+  if (priceIndex && crimeIndex){
+    tip = tip+"<h4>5-Year price(above) and crime(below) graphs:</h4>";
+  } else if (priceIndex){
+    tip = tip+"<h4>5-year price graph :</strong>";
+  } else if (crimeIndex){
+    tip = tip+"<h4>5-year crime graph:</strong>";
+  }
   barTooltip.transition()
     .style("opacity", 0.9)
     .attr("class", "tooltip");
@@ -78,7 +77,7 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
 
     var xAxis = d3.axisBottom(x);
 
-    var yAxis = d3.axisLeft(y).tickFormat(d3.format("s"))
+    var yAxis = d3.axisLeft(y).tickFormat(d3.format(".1s"))
     .ticks(2);
 
     var chart = barTooltip.append("svg")
@@ -132,7 +131,7 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
 
     var crime_xAxis = d3.axisBottom(crime_x);
 
-    var crime_yAxis = d3.axisLeft(crime_y).tickFormat(d3.format("s"))
+    var crime_yAxis = d3.axisLeft(crime_y).tickFormat(d3.format(".1s"))
     .ticks(2);
 
     var chart = barTooltip.append("svg")
@@ -167,7 +166,7 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
           if(crime_x(data.year)){
             return 10 + crime_x(data.year);
           }
-          return -1 ;
+          return 10 ;
         })
         .attr("y", function(data) {
           return crime_y(data.crime_rate);
@@ -207,90 +206,31 @@ function getPriceData(d, priceData, year){
   }
   return 0;
 }
-// http://data.beta.nyc//dataset/0ff93d2d-90ba-457c-9f7e-39e47bf2ac5f/resource/35dd04fb-81b3-479b-a074-a27a37888ce7/download/d085e2f8d0b54d4590b1e7d1f35594c1pediacitiesnycneighborhoods.geojson
-
-var g = svg.append("g")
-    .attr("class", "key")
-    .attr("transform", "translate(800,0)");
-
-g.selectAll("rect")
-  .data(color.range().map(function(d) {
-      d = color.invertExtent(d);
-	  //console.log(d);
-      if (d[0] == null) d[0] = y.domain()[0];
-      if (d[1] == null) d[1] = y.domain()[1];
-      return d;
-    }))
-  .enter().append("rect")
-    .attr("width", 20)
-    .attr("y", function(d) { return y(d[0]); })
-    .attr("height", function(d) { return y(d[1]) - y(d[0]); })
-    .attr("fill", function(d) { return color(d[0]); });
-
-g.append("text")
-    .attr("class", "caption")
-    .attr("y", y.range()[0]-10)
-    .attr("x", -20)
-    .attr("fill", "#000")
-    .attr("text-anchor", "start")
-    .attr("font-weight", "bold")
-    .text("Average sale price");
-
-g.call(d3.axisLeft(y)
-    .tickSize(13)
-    .tickFormat(function(y, i) { return i ? y : y; })
-    .tickValues(color.domain()))
-  .select(".domain")
-    .remove();
 
 var radius = d3.scaleSqrt().domain([0, 4e4]).range([0, 25]);
 
-var legend = svg.append("g")
-  .attr("class", "legend")
-  .attr("transform", "translate(" + (width - 170) + "," + (height - 100) + ")")
-  .selectAll("g")
-  .data([4e3, 2e4, 4e4])
-  .enter()
-  .append("g");
 
-  legend.append("circle")
-    .attr("cy", function(d) { return -radius(d); })
-    .attr("r", radius);
 
-  legend.append("text")
-      .attr("y", function(d) { return -2 * radius(d); })
-      .attr("dy", "1.3em")
-      .text(d3.format(".1s"));
-      legend.append("text")
-      .attr("class", "caption")
-      .attr("y", y.range()[0]-80)
-      .attr("x", 0)
-      .attr("fill", "#000")
-      .attr("text-anchor", "start")
-      .attr("font-weight", "bold")
-      .text("Crime Index");
+function create_map(nyc, pricedata, crimedata, htmlId, showHousing, showCrime){
+  // var svg = d3.select("svg"),
+  // width = +svg.attr("width"),
+  // height = +svg.attr("height");
+  var svg = d3.select(htmlId)
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
 
-//read in data
-queue()
-  .defer(d3.json, "nyc.json") // read geo data for nyc
-  // .defer(d3.json, "http://localhost:5000/boroughs") // read housing data
-  .defer(d3.csv, "NY_neighborhood_avg_sales_all.csv")
-  .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
-  .await(ready);
+  var path = d3.geoPath()
+  .projection(d3.geoConicConformal()
+  .parallels([33, 45])
+  .rotate([96, -39])
+  .fitSize([width, height], nyc));
 
-  function ready(error, nyc, pricedata, crimedata) {
-    if (error) throw error;
-
-    var path = d3.geoPath()
-      .projection(d3.geoConicConformal()
-      .parallels([33, 45])
-      .rotate([96, -39])
-      .fitSize([width, height], nyc));
-
+  if(showHousing){
     svg.selectAll("path")
-      .data(nyc.features)
-      .enter().append("path")
-      .attr("d", path)
+    .data(nyc.features)
+    .enter().append("path")
+    .attr("d", path)
     .style("fill", function(d){
       return color(getPriceData(d, pricedata, "2018"));
     })
@@ -298,12 +238,21 @@ queue()
       showToolTip(d, pricedata, crimedata, "2018", "2017");
     })
     .on("mouseout", function(d) {
-
       barTooltip.transition()
           .duration(500)
           .style("opacity", 0);
     });
+  }
 
+
+
+  if (showCrime){
+    if (!showHousing){
+      svg.selectAll("path")
+        .data(nyc.features)
+        .enter().append("path")
+        .attr("d", path);
+    }
     // Add crime bubble
     svg.append("g")
     .attr("class", "bubble")
@@ -323,6 +272,122 @@ queue()
           .duration(500)
           .style("opacity", 0);
     });
+  }
 
 
+
+  var g = svg.append("g")
+    .attr("class", "key")
+    .attr("transform", "translate(800,0)");
+
+  g.selectAll("rect")
+    .data(color.range().map(function(d) {
+        d = color.invertExtent(d);
+      //console.log(d);
+        if (d[0] == null) d[0] = y.domain()[0];
+        if (d[1] == null) d[1] = y.domain()[1];
+        return d;
+      }))
+    .enter().append("rect")
+      .attr("width", 20)
+      .attr("y", function(d) { return y(d[0]); })
+      .attr("height", function(d) { return y(d[1]) - y(d[0]); })
+      .attr("fill", function(d) { return color(d[0]); });
+
+  g.append("text")
+      .attr("class", "caption")
+      .attr("y", y.range()[0]-10)
+      .attr("x", -20)
+      .attr("fill", "#000")
+      .attr("text-anchor", "start")
+      .attr("font-weight", "bold")
+      .text("Average sale price");
+
+  g.call(d3.axisLeft(y)
+      .tickSize(13)
+      .tickFormat(function(y, i) { return i ? y : y; })
+      .tickValues(color.domain()))
+    .select(".domain")
+      .remove();
+
+
+  var legend = svg.append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate(" + (width - 170) + "," + (height - 100) + ")")
+    .selectAll("g")
+    .data([4e3, 2e4, 4e4])
+    .enter()
+    .append("g");
+
+  legend.append("circle")
+    .attr("cy", function(d) { return -radius(d); })
+    .attr("r", radius);
+
+  legend.append("text")
+      .attr("y", function(d) { return -2 * radius(d); })
+      .attr("dy", "1.3em")
+      .text(d3.format(".1s"));
+      legend.append("text")
+      .attr("class", "caption")
+      .attr("y", y.range()[0]-80)
+      .attr("x", 0)
+      .attr("fill", "#000")
+      .attr("text-anchor", "start")
+      .attr("font-weight", "bold")
+      .text("Crime Index");
+}
+
+//read in data
+queue()
+  .defer(d3.json, "nyc.json") // read geo data for nyc
+  .defer(d3.json, "http://54.89.25.157/boroughs") // read housing data
+  .defer(d3.json, "http://54.89.25.157/crimes")
+  // .defer(d3.csv, "NY_neighborhood_avg_sales_all.csv")
+  // .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
+  .await(ready);
+
+function ready(error, nyc, pricedata, crimedata) {
+    if (error) {
+      throw error;
+    }
+    create_map(nyc, pricedata, crimedata, "#map", true, true);
+    addOption(nyc, pricedata, crimedata, "#options", "#map");
+}
+
+function addOption(nyc, pricedata, crimedata, htmlId, mapId) {
+  var optionData = ["Both", "Housing", "Crime", ];
+  var w = 1000;
+  var h = 1000;
+  var select = d3.select(htmlId)
+      .append('select')
+      .attr('class','select')
+      .attr("width", w)
+      .attr("height", h)
+      .on('change',onchange)
+
+  var options = select
+      .selectAll('option')
+      .data(optionData).enter()
+      .append('option')
+      .text(function (d) { return d; });
+
+  function onchange() {
+      selectValue = d3.select('select').property('value');
+      console.log(selectValue);
+      var showHousing = false;
+      var showCrime = false;
+      if (selectValue == "Housing"){
+        showHousing = true;
+      }
+      if (selectValue == "Crime"){
+        showCrime = true;
+      }
+      if(selectValue == "Both"){
+        showHousing = true
+        showCrime = true
+      }
+
+      d3.select("svg").remove();
+      create_map(nyc, pricedata, crimedata, mapId, showHousing, showCrime);
+  }
 }

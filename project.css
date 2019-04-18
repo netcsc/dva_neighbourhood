@@ -29,7 +29,25 @@ font-family: sans-serif;
 font-size:12px;
 }
 
-.y-axis path, .y-axis line {
+.tooltip {
+  position: absolute;
+  max-width: 400px;
+  height: auto;
+  padding: 5px;
+  background-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  font-family: sans-serif;
+  font-size:12px;
+}
+
+.y-axis path,
+.y-axis line {
     fill: none;
     stroke: #666;
     color: #666;
@@ -41,9 +59,17 @@ font-size:12px;
   color: #666;
 }
 
+.x-axis, .y-axis text {
+    font-family: sans-serif;
+    font-size: 10px;
+    color: #666;
+    fill: #666;
+
+}
 .bar {
   fill: #666;
 }
+
 
 .legend text {
   fill: #777;
@@ -53,4 +79,26 @@ font-size:12px;
 .legend circle {
   fill: none;
   stroke: #F15B2A;
+}
+
+.land {
+  fill: #e5e5e5;
+}
+
+.border {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.title {
+  margin-left: 350px;
+  color: purple;
+  font-size: x-large;
+}
+
+.select{
+  border-color: cadetblue;
+  border-width: 3px
 }
