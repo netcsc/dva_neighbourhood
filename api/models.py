@@ -37,7 +37,7 @@ class Crime(Base):
     def to_json(self):
         return {
             'neighborhood_id': self.neighborhood_id,
-            'neighborhood': self.neighborhood_id,
+            'neighborhood': self.neighborhood,
             'crime_rate': self.crime_rate,
             'year': self.year
         }
