@@ -1,7 +1,23 @@
-# GATech CSE6242 Data and Visual Analytics Project Repo
+# I l♥ve My Neighborhood
+### GATech CSE6242 Data and Visual Analytics Project Repo
 
 This is the repo for CSE 6242 Data and Visual Analytics project. A place for project team member to share code and collaborate
 
+### Screenshots
+with both housing and crime data
+![alt text](./images/screen.png "Screen shot")
+
+with only housing data
+![alt text](./images/Housing.png "housing data")
+
+with only crime data
+![alt text](./images/Crime.png "Crime data")
+
+Tooltips show details
+![alt text](./images/Tooltips.png "Tooltip data")
+
+Ready to try this out yourself?
+[Yes](http://40.84.17.159/)
 
 ## Project team member
 | Name | Email | Location | TimeZone |Available Time (EST)|
@@ -13,7 +29,11 @@ This is the repo for CSE 6242 Data and Visual Analytics project. A place for pro
 | Neal Manaktola| nmanaktola3@gatech.edu |Toronto|EST|Weekday 7p.m. - 10 p.m. Sat 1 p.m. - 10 p.m. Sunday 1 p.m. - 10 p.m.|
 | Yuying Wang| ywang3391@gatech.edu  |China|CST(EST+13hrs)|Weekday and weekends 9a.m. - 11a.m; 9p.m. - 12a.m|
 
-## API
+
+
+## Developer's guide
+
+### API
 
 The API returns the housing data from postgres db. The database has been seeded with the data as specified in NY_neighborhood_avg_sales_2018.csv.
 
@@ -27,78 +47,20 @@ If you want to run this API locally:
 
 Server IP: `54.89.25.157`
 Endpoints: `/boroughs` to get the aggregate housing data i.e `http://54.89.25.157/boroughs`
-Endpoints: `/crimes` to get the aggregate crime data i.e `http://54.89.25.157/boroughs`
+Endpoints: `/crimes` to get the aggregate crime data i.e `http://54.89.25.157/crimes`
 
 To run app locally `
 
-### Test API locally
+#### Test API locally
 
 1. Start local postgrest database `docker run --name postgres -e POSTGRES_PASSWORD=cse6242 -p 5432:5432 -d postgres`
 1. Create a database in postgres CREATE DATABASE neighbourhood;
 1. Start the API server `gunicorn -b 0.0.0.0:5000 app:api --reload`
 
-## Logging into API server
+#### Logging into API server
 
-It's hosted on Amazon EC2 instance. 
+It's hosted on Amazon EC2 instance.
 `ssh -i cse6242-project.pem ubuntu@ec2-54-89-25-157.compute-1.amazonaws.com`
-The ssh-key is inside the repo. The project is in the home directory. 
-
-## Project Requirement
-[link](https://docs.google.com/document/d/e/2PACX-1vTc_2yqk8QfK-SkdDPxJVJcM31kogiVFsZKOuJ2qHHnRn5aaA4r74u-gErMTsE8jGVoYeVB83MtjFTN/pub)
+The ssh-key is inside the repo. The project is in the home directory.
 
 
-## Project ideas
-[Some data set ideas](https://poloclub.github.io/cse6242-2019spring-online/#datasets)
-TBD
-
-## Meeting notes
-
-### Jan 17 2019
-
-#### attendees
-
-Everyone :-)
-
-#### Outline
-
-1. Team introduction
-
-1. Impression about the course and project.
-
-1. Planning of the project's next step.
-
-#### Action item
-
-1. Schedule next meeting on Feb 1 for project idea sync up
-
-    *Owner*: Siwei
-
-2. Come up with 2 project ideas (1 primary and 1 backup).
-
-Please read project requirement on the website as well the Slide that Jun shared http://poloclub.gatech.edu/cse6242/2017spring/slides/CSE6242-999-project.pdf ( Thank you Jun!)
-
-Please special attention to slide 9:
-
-Heilmeier Questions:
-
-1. What are you trying to do? Articulate your objectives using absolutely no jargon.
-
-2. How is it done today; what are the limits of current practice?
-
-3. What's new in your approach; why it will be successful?
-
-4. Who cares?
-
-5. If you're successful, what difference and impact will it make? How do you measure them (e.g., via user studies, experiments, groundtruth data, etc.)?
-
-6. What are the risks and payoffs?
-
-7. How much will it cost?
-
-8. How long will it take?
-
-9. What are the midterm and final "exams" to check for success?
-
-Come prepared for these question for the project that you choose.
-
-*Owner*: All
