@@ -27,12 +27,21 @@ If you want to run this API locally:
 
 Server IP: `54.89.25.157`
 Endpoints: `/boroughs` to get the aggregate housing data i.e `http://54.89.25.157/boroughs`
+Endpoints: `/crimes` to get the aggregate crime data i.e `http://54.89.25.157/boroughs`
+
+To run app locally `
 
 ### Test API locally
 
 1. Start local postgrest database `docker run --name postgres -e POSTGRES_PASSWORD=cse6242 -p 5432:5432 -d postgres`
 1. Create a database in postgres CREATE DATABASE neighbourhood;
-1. Start the API server `Gunicorn -b 0.0.0.0:5000 app:api --reload`
+1. Start the API server `gunicorn -b 0.0.0.0:5000 app:api --reload`
+
+## Logging into API server
+
+It's hosted on Amazon EC2 instance. 
+`ssh -i cse6242-project.pem ubuntu@ec2-54-89-25-157.compute-1.amazonaws.com`
+The ssh-key is inside the repo. The project is in the home directory. 
 
 ## Project Requirement
 [link](https://docs.google.com/document/d/e/2PACX-1vTc_2yqk8QfK-SkdDPxJVJcM31kogiVFsZKOuJ2qHHnRn5aaA4r74u-gErMTsE8jGVoYeVB83MtjFTN/pub)
