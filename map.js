@@ -5,6 +5,10 @@ var y = d3.scaleLinear()
 
 var width = 960, height = 720;
 
+var showHousing = true;
+var showCrime = true;
+var housing_weight = 0.5;
+
 var color = d3.scaleThreshold()
     .domain(d3.range(300000, 1650000, 150000))
     .range(colorbrewer.Greens[9]);
@@ -30,7 +34,7 @@ function showToolTip(d, pricedata, crimedata, price_default_year, crime_default_
   var priceIndex = priceIdxScale(getPriceData(d , pricedata, price_default_year));
 
   var crimeIndex = crimeIdxScale(getCrimeData(d, crimedata, crime_default_year));
-	var livingIndex = 10 - (priceIndex + crimeIndex)/2.0
+	var livingIndex = 10 - (housing_weight * priceIndex + (1- housing_weight) *crimeIndex)
 
   var tip = "<h3>" + d.properties.neighborhood + " (" + d.properties.borough + ") " + "</h3>";
 
@@ -267,14 +271,11 @@ function create_map(nyc, pricedata, crimedata, htmlId, showHousing, showCrime){
       showToolTip(d, pricedata, crimedata, "2018", "2017");
     })
     .on("mouseout", function(d) {
-
       barTooltip.transition()
           .duration(500)
           .style("opacity", 0);
     });
   }
-
-
 
   var g = svg.append("g")
     .attr("class", "key")
@@ -352,6 +353,7 @@ function ready(error, nyc, pricedata, crimedata) {
     }
     create_map(nyc, pricedata, crimedata, "#map", true, true);
     addOption(nyc, pricedata, crimedata, "#options", "#map");
+    addSlider();
 }
 
 function addOption(nyc, pricedata, crimedata, htmlId, mapId) {
@@ -374,20 +376,50 @@ function addOption(nyc, pricedata, crimedata, htmlId, mapId) {
   function onchange() {
       selectValue = d3.select('select').property('value');
       console.log(selectValue);
-      var showHousing = false;
-      var showCrime = false;
       if (selectValue == "Housing"){
-        showHousing = true;
+        showCrime = false;
       }
       if (selectValue == "Crime"){
-        showCrime = true;
-      }
-      if(selectValue == "Both"){
-        showHousing = true
-        showCrime = true
+        showHousing = false;
       }
 
-      d3.select("svg").remove();
+      d3.select("#map").select("svg").remove();
       create_map(nyc, pricedata, crimedata, mapId, showHousing, showCrime);
+    }
+}
+
+function addSlider(){
+  var data = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
+  var sliderStep = d3
+  .sliderBottom()
+  .min(d3.min(data))
+  .max(d3.max(data))
+  .width(300)
+  .tickFormat(d3.format('.1'))
+  .ticks(9)
+  .step(0.1)
+  .default(0.5)
+  .on('onchange', function(val){
+    onchange(val)
+  });
+
+  var gStep = d3
+    .select('#slider-step')
+    .append('svg')
+    .attr('width', 500)
+    .attr('height', 100)
+    .append('g')
+    .attr('transform', 'translate(30,30)');
+
+  gStep.call(sliderStep);
+
+  d3.select('#value-step').text("Personal preference: housing weigh " +  d3.format('.1')(sliderStep.value()));
+
+  function onchange(val) {
+    housing_weight = d3.format('.1')(val);
+    d3.select('#value-step').text("Personal preference: housing weigh " + housing_weight);
+    console.log(showHousing);
+    console.log(showCrime);
+    console.log(housing_weight);
   }
 }
