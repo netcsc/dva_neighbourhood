@@ -418,11 +418,11 @@ function addSlider(){
 
   gStep.call(sliderStep);
 
-  d3.select('#value-step').text("Personal preference: housing weigh " +  d3.format('.1')(sliderStep.value()));
+  d3.select('#value-step').text("Personal preference for living index: housing weight " +  d3.format('.1')(sliderStep.value()) + " VS crime weight " + (1 - d3.format('.1')(sliderStep.value())));
 
   function onchange(val) {
     housing_weight = d3.format('.1')(val);
-    d3.select('#value-step').text("Personal preference: housing weigh " + housing_weight);
+    d3.select('#value-step').text("Personal preference for living index: housing weight " + housing_weight + " VS crime weight " + d3.format('.1')(1 - housing_weight));
     console.log(showHousing);
     console.log(showCrime);
     console.log(housing_weight);

@@ -35,9 +35,23 @@ It can also change to use local file in case of no internet
   .defer(d3.csv,"NY_neighborhood_avg_sales_all.csv")
   .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
 ```
+
+#### Package and run the code
+##### use hosted website
+We have hosted our application in the cloud, you can access it at http://40.84.17.159/
+
+#### Run the application locally
+we use [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) to package and run our application
+
+1. Install docker and docker-compose
+2. Run `docker-compose up -d` to start the web server
+3. go to http://localhost/ to access the web application
+
+Note that the web app will use the hosted api server that we have hosted in the cloud see API session if you want to setup the api server locally.
 ### API
 
 The API returns the housing data from postgres db. The database has been seeded with the data as specified in NY_neighborhood_avg_sales_2018.csv.
+for housing data and crime_all.csv for crime data.
 
 The API app is built in python and has dependencies as specified in the requirements.txt.
 If you want to run this API locally:
@@ -45,19 +59,24 @@ If you want to run this API locally:
 1. Install virtualenv https://docs.python-guide.org/dev/virtualenvs/
 2. Create virtual env `virtualenv .venv`
 3. Install dependencies `pip install -r requirements.txt`
-4. Please note you need to have postgresql installed as well.
+4. Please note you need to have postgresql installed as well (see postgres session for details).
+5. Start the API using `gunicorn -b 0.0.0.0:5000 app:api --reload`. API server is started on http://localhost:5000  
 
+##### Hosted API
 Server IP: `54.89.25.157`
 Endpoints: `/boroughs` to get the aggregate housing data i.e `http://54.89.25.157/boroughs`
 Endpoints: `/crimes` to get the aggregate crime data i.e `http://54.89.25.157/crimes`
 
-To run app locally `
-
-#### Test API locally
+### Data store
+We use postgres database as our datastore. Easiest way to run posrgres database locally is using docker container
 
 1. Start local postgrest database `docker run --name postgres -e POSTGRES_PASSWORD=cse6242 -p 5432:5432 -d postgres`
-1. Create a database in postgres CREATE DATABASE neighbourhood;
-1. Start the API server `gunicorn -b 0.0.0.0:5000 app:api --reload`
+2. login to postgres database use user postgres and password cse6242
+3. Create a database in postgres CREATE DATABASE neighbourhood;
+
+
+
+
 
 #### Logging into API server
 
