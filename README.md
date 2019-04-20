@@ -74,8 +74,15 @@ We use postgres database as our datastore. Easiest way to run posrgres database 
 2. login to postgres database use user postgres and password cse6242
 3. Create a database in postgres CREATE DATABASE neighbourhood;
 
+### Machine learning model
 
+#### Customized recommendation model
 
+Run jupyter notebook recommendation.ipynb
+
+#### Price prediction
+
+Run ```python price_prediction.py``` to generate prediction
 
 
 #### Logging into API server
