@@ -3,21 +3,7 @@
 
 This is the repo for CSE 6242 Data and Visual Analytics project. A place for project team member to share code and collaborate
 
-### Screenshots
-with both housing and crime data
-![alt text](./images/Screen.png "Screen shot")
 
-with only housing data
-![alt text](./images/Housing.png "housing data")
-
-with only crime data
-![alt text](./images/Crime.png "Crime data")
-
-Tooltips show details
-![alt text](./images/Tooltips.png "Tooltip data")
-
-Ready to try this out yourself?
-[Yes](http://40.84.17.159/)
 
 ## Project team member
 | Name | Email | Location | TimeZone |Available Time (EST)|
@@ -28,11 +14,27 @@ Ready to try this out yourself?
 | Siwei Wang| siwei.wang@gatech.edu |Toronto|EST|Weekday 9p.m. - 12 a.m. Sat 1 p.m. - 12 a.m. Sunday 10 a.m. - 11 p.m.|
 | Neal Manaktola| nmanaktola3@gatech.edu |Toronto|EST|Weekday 7p.m. - 10 p.m. Sat 1 p.m. - 10 p.m. Sunday 1 p.m. - 10 p.m.|
 | Yuying Wang| ywang3391@gatech.edu  |China|CST(EST+13hrs)|Weekday and weekends 9a.m. - 11a.m; 9p.m. - 12a.m|
-
-
-
 ## Developer's guide
+### Frontend
 
+Frontend is written using D3.js which includes following files:
+1. index.html -- the main html file
+2. map.js -- the d3.js file for map visualization and user interaction
+3. nyc.json -- the NYC topojson file that contains NYC neighborhood information.
+4. project.css -- the css for the project.
+
+In the map.js file, it will make call our api server to get the housing price data and the crime data.
+
+```
+  .defer(d3.json, "http://54.89.25.157/boroughs")
+  .defer(d3.json, "http://54.89.25.157/crimes")
+```
+
+It can also change to use local file in case of no internet
+```
+  .defer(d3.csv,"NY_neighborhood_avg_sales_all.csv")
+  .defer(d3.csv,"crime_index_per_neighborhood_data/crime_all.csv")
+```
 ### API
 
 The API returns the housing data from postgres db. The database has been seeded with the data as specified in NY_neighborhood_avg_sales_2018.csv.
@@ -64,3 +66,18 @@ It's hosted on Amazon EC2 instance.
 The ssh-key is inside the repo. The project is in the home directory.
 
 
+### Screenshots
+with both housing and crime data
+![alt text](./images/Screen.png "Screen shot")
+
+with only housing data
+![alt text](./images/Housing.png "housing data")
+
+with only crime data
+![alt text](./images/Crime.png "Crime data")
+
+Tooltips show details
+![alt text](./images/Tooltips.png "Tooltip data")
+
+Ready to try this out yourself?
+[Yes](http://40.84.17.159/)

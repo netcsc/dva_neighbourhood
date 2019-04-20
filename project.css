@@ -6,7 +6,7 @@ path {
   }
 
   .bubble {
-    fill: red; /*  PS Orange */
+    fill: red;
     fill-opacity: .3;
     stroke: #fff;
     stroke-width: .5px;
