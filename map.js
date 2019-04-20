@@ -378,11 +378,16 @@ function addOption(nyc, pricedata, crimedata, htmlId, mapId) {
       console.log(selectValue);
       if (selectValue == "Housing"){
         showCrime = false;
+        showHousing = true;
       }
       if (selectValue == "Crime"){
         showHousing = false;
+        showCrime = true;
       }
-
+      if (selectValue == "Both"){
+        showHousing = true;
+        showCrime = true;
+      }
       d3.select("#map").select("svg").remove();
       create_map(nyc, pricedata, crimedata, mapId, showHousing, showCrime);
     }
